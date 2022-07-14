@@ -245,6 +245,10 @@ const GcnEventPage = ({ route }) => {
     (state) => state?.observations?.gcnEventObservations
   );
 
+  const gcnEventCirculars = useSelector(
+    (state) => state?.observations?.gcnEventCirculars
+  )
+
   useEffect(() => {
     const fetchGcnEvent = async (dateobs) => {
       await dispatch(gcnEventActions.fetchGcnEvent(dateobs));
@@ -421,6 +425,28 @@ const GcnEventPage = ({ route }) => {
             >
               <Typography className={styles.accordionHeading}>
                 GCN Notices
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={styles.gcnEventContainer}>
+                {gcnEvent.gcn_notices?.map((gcn_notice) => (
+                  <li key={gcn_notice.ivorn}>
+                    <DownloadXMLButton gcn_notice={gcn_notice} />
+                  </li>
+                ))}
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+        <div className={styles.columnItem}>
+          <Accordion defaultExpanded>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="gcnEvent-content"
+              id="circulars-header"
+            >
+              <Typography className={styles.accordionHeading}>
+                GCN Circulars
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
