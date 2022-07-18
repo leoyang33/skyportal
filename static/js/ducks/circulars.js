@@ -12,10 +12,10 @@ export function fetchGcnEventCirculars(gcnSubject) {
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case ROTATE_LOGO: {
+    case FETCH_CIRCULARS_OK: {
       return {
         ...state,
-        rotateLogo: action.data,
+        gcnEventCirculars: action.data,
       };
     }
     default:

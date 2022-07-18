@@ -246,7 +246,7 @@ const GcnEventPage = ({ route }) => {
   );
 
   const gcnEventCirculars = useSelector(
-    (state) => state?.observations?.gcnEventCirculars
+    (state) => state?.circulars?.gcnEventCirculars
   )
 
   useEffect(() => {
@@ -451,9 +451,9 @@ const GcnEventPage = ({ route }) => {
             </AccordionSummary>
             <AccordionDetails>
               <div className={styles.gcnEventContainer}>
-                {gcnEvent.gcn_notices?.map((gcn_notice) => (
-                  <li key={gcn_notice.ivorn}>
-                    <DownloadXMLButton gcn_notice={gcn_notice} />
+                {gcnEvent.circulars.map((gcn_circular) => (
+                  <li key={gcn_circular.number}>
+                    <a href={gcn_circular.link} target="_blank">{gcn_circular.title}</a>
                   </li>
                 ))}
               </div>
